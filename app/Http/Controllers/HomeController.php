@@ -8,6 +8,9 @@ use App\Student;
 class HomeController extends Controller
 {
    public function index() {
-       return view('home');
+
+        $students = Student::all();
+
+       return view('home', compact('students'));
    }
 }
