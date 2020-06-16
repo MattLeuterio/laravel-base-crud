@@ -1,0 +1,27 @@
+// Commons
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Rubik', sans-serif;
+    background: #fff;
+    color: $blue;
+    @include flex(column, flex-start, center);
+}
+
+
+a {
+    @include reset-a;
+}
+
+ul {
+    @include reset-list;
+}
+
+
+

@@ -1,0 +1,26 @@
+// MIXINS
+
+
+@mixin responsive ($width: $desktop){
+    @media (max-width: $width){
+      @content;
+    }
+}
+
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin reset-a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@mixin flex($dir: row, $just: flex-start, $align: flex-start) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $just;
+    align-items: $align;
+}
