@@ -23,5 +23,9 @@ ul {
     @include reset-list;
 }
 
-
+.main-content {
+    width: 100%;
+    margin-top: 50px;
+    flex-grow: 1;
+}
 

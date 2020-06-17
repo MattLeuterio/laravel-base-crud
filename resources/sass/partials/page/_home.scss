@@ -1,19 +1,50 @@
-.main-content {
-    width: 100%;
-    max-width: 1180px;
-    flex-grow: 1;
+.home {
+    .container {
 
-    .students {
+        .row {
+            @include flex(row, center, center);
+        }
+    }
+}
 
+.jumbo {
+    @include flex(row, center, center);
+    width: 90%;
+    height: 500px;
 
-        .single-student {
+    &-text {
+        width: 60%;
+        h2 {
+            font-size: 58.5px;
+            text-transform: uppercase;
+            font-weight: 300;
 
-            
-            padding: 20px;
-
-            h4 {
-
+            span {
+                font-weight: 400;
             }
         }
+
+        p {
+            font-size: 22px;
+            font-weight: 400;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 20px;
+
+            li {
+
+                font-weight: 300;
+
+                strong {
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    &-img {
+        width: 40%;
     }
 }

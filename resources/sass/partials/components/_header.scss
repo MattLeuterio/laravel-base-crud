@@ -1,7 +1,25 @@
 .main-header {
     width: 100%;
     height: 90px;
-    @include flex(row, center, center);
-    background: $blue;
-    color: #fff;
+    @include flex(row, flex-start, center);
+    background: #fff;
+    color: $blue;
+
+    .navbar {
+        @include flex(row, space-between, center);
+        width: 100%;
+
+        &-brand {
+            width: 100px;
+        }
+
+        &-links {
+
+            .navbar-nav {
+                
+                @include flex(row, center, center);
+            }
+        }
+
+    }
 }

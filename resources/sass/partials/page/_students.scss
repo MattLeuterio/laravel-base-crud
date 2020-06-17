@@ -1,0 +1,32 @@
+
+.students {
+
+    .table {
+        th {
+            color: $green;
+        }
+    }
+}
+
+
+.btn {
+    color: #fff;
+}
+
+.show {
+    background-color: $blue;
+
+    &:hover {
+
+        background-color: $blueHover;
+        color: #fff;
+    }
+}
+
+.update {
+    background-color: $green;
+}
+
+.delete {
+    background-color: var(--red);
+}
