@@ -41,7 +41,7 @@ class StudentController extends Controller
 
         // Validation
         $request->validate([
-            'name' => 'required|unique:posts|max:30',
+            'name' => 'required|unique:students|max:30',
             'class' => 'required|max:25',
             'languages' => 'required'
         ]);
