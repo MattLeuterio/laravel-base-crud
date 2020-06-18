@@ -4,6 +4,11 @@
 
 <main class="main-content">
     <div class="container">
+        @if(session('deleted'))
+            <div class="row deleted alert alert-success">
+                {{ session('deleted') }}
+            </div>
+        @endif
         <div class="row students">
             <table class="table table-hover">
                 <thead>
@@ -25,8 +30,14 @@
                         <td>{{ $student->class }}</td>
                         <td>{{ $student->languages }}</td>
                         <td><a class="btn show" href="{{ route('students.show', $student->id) }}">Show</a></td>
-                        <td><a class="btn update"href="#">Update</a></td>
-                        <td><a class="btn delete"href="#">Delete</a></td>
+                        <td><a class="btn update"href="{{ route('students.edit', $student->id) }}">Update</a></td>
+                        <td>
+                            <form action="{{ route('students.destroy', $student->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input class="btn delete" type="submit" value='Delete'>
+                            </form>
+                        </td>
                     </tr>
                      @endforeach
                 </tbody>

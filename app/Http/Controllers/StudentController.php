@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
 {
@@ -40,11 +41,7 @@ class StudentController extends Controller
         $data = $request->all();
 
         // Validation
-        $request->validate([
-            'name' => 'required|unique:students|max:30',
-            'class' => 'required|max:25',
-            'languages' => 'required'
-        ]);
+        $request->validate($this->validateFields());
 
         $studentNew = new Student();
         // $studentNew->name = $data['name'];
@@ -82,9 +79,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        //
+        return view('students.edit', compact('student'));
     }
 
     /**
@@ -94,9 +91,14 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
-        //
+        $data = $request->all();
+        $request->validate($this->validateFields($student->id));
+
+        $student->update($data);
+        
+        return redirect()->route('students.index');
     }
 
     /**
@@ -105,8 +107,41 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        //
+        $refStudent = $student->name . ' has been deleted';
+        $hasDeleted = $student->delete();
+        
+        if($hasDeleted) {
+            return redirect()->route('students.index')->with('deleted', $refStudent);
+        }
+
+        return view('students.index');
+    }
+
+
+    // Utilities
+
+    // Validation
+
+    private function validateFields($id = null) {
+
+        return [
+
+            'name' => [
+                'required',
+                Rule::unique('students')->ignore($id),
+                'max:30',
+            ],
+            'class' => [
+                'required',
+                'max:25',
+            ],
+            'languages' => [
+                'required'
+            ]
+
+        ];
+
     }
 }
