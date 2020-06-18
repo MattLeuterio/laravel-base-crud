@@ -47,9 +47,10 @@ class StudentController extends Controller
         ]);
 
         $studentNew = new Student();
-        $studentNew->name = $data['name'];
-        $studentNew->class = $data['class'];
-        $studentNew->languages = $data['languages'];
+        // $studentNew->name = $data['name'];
+        // $studentNew->class = $data['class'];
+        // $studentNew->languages = $data['languages'];
+        $studentNew->fill($data);
 
         // dd($studentNew);
 
