@@ -17,3 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 // Page
 Route::resource('students', 'StudentController');
+Route::resource('teachers', 'TeacherController');
+
+// Static-Page
+Route::get('/partners', 'PartnerController@partners')->name('static-pages.partners');

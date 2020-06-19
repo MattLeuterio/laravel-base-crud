@@ -26,11 +26,14 @@
                     <li class="nav-item active">
                       <a class="nav-link" href="{{ route('home') }}" >Home <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{{ route('static-pages.partners') }}" >Partners <span class="sr-only">(current)</span></a>
+                    </li>
                     <li class="nav-item">
                       <a class="nav-link" href=" {{ route('students.index') }} ">Students</a>
                     </li>
                     <li class="nav-item">
-                    <a class="btn btn-sm show" href="{{ route('students.create') }}">Add Student</a>
+                      <a class="nav-link" href=" {{ route('teachers.index') }} ">Teachers</a>
                     </li>
                   </ul>
                 </div>

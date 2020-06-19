@@ -9,35 +9,33 @@
                 {{ session('deleted') }}
             </div>
         @endif
-
         <div class="row">
-            <h1>Students</h1>
+            <h1>Teachers</h1>
         </div>
-
-        <div class="row students mt-4">
+        <div class="row teachers mt-4">
             <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Class</th>
-                    <th scope="col">Languages</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Age</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
                     <tbody>
-                    @foreach($students as $student)
+                    @foreach($teachers as $teacher)
                     <tr>
-                        <td>{{ $student->id }}</td>
-                        <td>{{ $student->name }}</td>
-                        <td>{{ $student->class }}</td>
-                        <td>{{ $student->languages }}</td>
-                        <td><a class="btn show" href="{{ route('students.show', $student->id) }}">Show</a></td>
-                        <td><a class="btn update"href="{{ route('students.edit', $student->id) }}">Update</a></td>
+                        <td>{{ $teacher->id }}</td>
+                        <td>{{ $teacher->name }}</td>
+                        <td>{{  ($teacher->gender == 'm') ? 'Male' : 'Female' }}</td>
+                        <td>{{ $teacher->age }}</td>
+                        <td><a class="btn show" href="">Show</a></td>
+                        <td><a class="btn update"href="">Update</a></td>
                         <td>
-                            <form action="{{ route('students.destroy', $student->id) }}" method="POST">
+                            <form action="" method="POST">
                             @csrf
                             @method('DELETE')
                             <input class="btn delete" type="submit" value='Delete'>
@@ -49,7 +47,7 @@
             </table>
         </div>
         <div class="row flex-row-reverse">
-            <a class="btn btn-sm show" href="{{ route('students.create') }}">Add Student</a>
+            <a class="btn btn-sm show" href="">Add Teacher</a>
         </div>
     </div>
 </main>

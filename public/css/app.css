@@ -29,8 +29,30 @@ ul {
 
 .main-content {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   flex-grow: 1;
+}
+
+.btn {
+  color: #fff;
+}
+
+.show {
+  background-color: #1b3c59;
+}
+
+.show:hover {
+  background-color: #274f72;
+  color: #fff;
+}
+
+.update {
+  background-color: #61ce4e;
+}
+
+.delete {
+  background-color: var(--red);
 }
 
 .main-header {
@@ -72,6 +94,10 @@ ul {
   align-items: center;
   background: #1b3c59;
   color: #fff;
+}
+
+.table th {
+  color: #61ce4e;
 }
 
 .home .container .row {
@@ -126,28 +152,7 @@ ul {
   width: 40%;
 }
 
-.students .table th {
+.partners h5 {
   color: #61ce4e;
-}
-
-.btn {
-  color: #fff;
-}
-
-.show {
-  background-color: #1b3c59;
-}
-
-.show:hover {
-  background-color: #274f72;
-  color: #fff;
-}
-
-.update {
-  background-color: #61ce4e;
-}
-
-.delete {
-  background-color: var(--red);
 }
 
