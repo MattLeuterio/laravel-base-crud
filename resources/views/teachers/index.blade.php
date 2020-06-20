@@ -9,8 +9,9 @@
                 {{ session('deleted') }}
             </div>
         @endif
-        <div class="row">
+        <div class="row title-and-cta">
             <h1>Teachers</h1>
+            <a class="btn btn-sm show" href=" {{ route('teachers.create') }} ">Add Teacher</a>
         </div>
         <div class="row teachers mt-4">
             <table class="table table-hover">
@@ -45,9 +46,6 @@
                      @endforeach
                 </tbody>
             </table>
-        </div>
-        <div class="row flex-row-reverse">
-            <a class="btn btn-sm show" href=" {{ route('teachers.create') }} ">Add Teacher</a>
         </div>
     </div>
 </main>

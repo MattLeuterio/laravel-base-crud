@@ -53,3 +53,7 @@ ul {
 .delete {
     background-color: var(--red);
 }
+
+.title-and-cta {
+    @include flex(row, space-between, center);
+}

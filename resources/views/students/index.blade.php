@@ -10,8 +10,9 @@
             </div>
         @endif
 
-        <div class="row">
+        <div class="row title-and-cta">
             <h1>Students</h1>
+            <a class="btn btn-sm show" href="{{ route('students.create') }}">Add Student</a>
         </div>
 
         <div class="row students mt-4">
@@ -47,9 +48,6 @@
                      @endforeach
                 </tbody>
             </table>
-        </div>
-        <div class="row flex-row-reverse">
-            <a class="btn btn-sm show" href="{{ route('students.create') }}">Add Student</a>
         </div>
     </div>
 </main>
