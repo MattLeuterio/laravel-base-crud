@@ -100,6 +100,21 @@ ul {
   color: #61ce4e;
 }
 
+.radio-input .form-control {
+  width: 15px;
+}
+
+.radio-input--ctn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.radio-input--ctn input {
+  margin-right: 10px;
+}
+
 .home .container .row {
   display: flex;
   flex-direction: row;

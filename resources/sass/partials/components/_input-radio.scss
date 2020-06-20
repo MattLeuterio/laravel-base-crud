@@ -1,0 +1,14 @@
+.radio-input {
+
+    .form-control {
+        width: 15px;
+    }
+
+    &--ctn {
+        @include flex(row, flex-start, flex-end);
+
+        input {
+            margin-right: 10px;
+        }
+    }
+}

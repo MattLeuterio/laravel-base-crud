@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Teacher;
+use Illuminate\Validation\Rule;
 
 class TeacherController extends Controller
 {
@@ -25,7 +26,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view('teachers.create');
     }
 
     /**
@@ -36,7 +37,24 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        // validation 
+        $request->validate($this->validateNewTeacher());
+        // dd($data);
+
+        $newTeacher = New Teacher();
+        $newTeacher->fill($data);
+
+        $saved = $newTeacher->save();
+
+        if($saved) {
+
+            $idTeacher = $newTeacher::find($newTeacher->id);
+            return redirect()->route('teachers.show', $idTeacher);
+
+        }
+
     }
 
     /**
@@ -45,9 +63,11 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Teacher $teacher)
     {
-        //
+        
+        return view('teachers.show', compact('teacher'));
+
     }
 
     /**
@@ -56,9 +76,9 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Teacher $teacher)
     {
-        //
+        return view('teachers.edit', compact('teacher'));
     }
 
     /**
@@ -68,9 +88,17 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Teacher $teacher)
     {
-        //
+        $data = $request->all();
+        
+        //validation
+        $request->validate($this->validateNewTeacher($teacher->id));
+        
+        $teacher->update($data);
+
+        return redirect()->route('teachers.index');
+
     }
 
     /**
@@ -79,8 +107,38 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Teacher $teacher)
     {
-        //
+        $refTeacher = $teacher->name . ' has been deleted';
+        $deleted = $teacher->delete();
+        
+        if($deleted) {
+            return redirect()->route('teachers.index')->with('deleted', $refTeacher);
+        }
+
+        return view('teachers.index');
+    }
+
+    private function validateNewTeacher($id = null) {
+
+        return [
+            
+            'name' => [
+                'required',
+                Rule::unique('teachers')->ignore($id),
+                'max:30'
+            ],
+            'gender' => [
+                'required',
+                'max:1',
+            ],
+            'age' => [
+                'required',
+                'gte:18',
+                'lte:65'
+            ]
+
+        ];
+
     }
 }

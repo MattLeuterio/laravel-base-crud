@@ -32,10 +32,10 @@
                         <td>{{ $teacher->name }}</td>
                         <td>{{  ($teacher->gender == 'm') ? 'Male' : 'Female' }}</td>
                         <td>{{ $teacher->age }}</td>
-                        <td><a class="btn show" href="">Show</a></td>
-                        <td><a class="btn update"href="">Update</a></td>
+                        <td><a class="btn show" href=" {{ route('teachers.show', $teacher->id) }} ">Show</a></td>
+                        <td><a class="btn update" href=" {{ route('teachers.edit', $teacher->id) }}">Update</a></td>
                         <td>
-                            <form action="" method="POST">
+                            <form action=" {{ route('teachers.destroy', $teacher->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input class="btn delete" type="submit" value='Delete'>
@@ -47,7 +47,7 @@
             </table>
         </div>
         <div class="row flex-row-reverse">
-            <a class="btn btn-sm show" href="">Add Teacher</a>
+            <a class="btn btn-sm show" href=" {{ route('teachers.create') }} ">Add Teacher</a>
         </div>
     </div>
 </main>
